@@ -1,0 +1,29 @@
+<app-menu></app-menu>
+<div class="container my-3">
+
+    <app-header [title]="'Listado de ' + strTitlePlural">
+    </app-header>
+
+    <app-encuentro-unrouted-plist [id_tipousuario]="id_tipousuario">
+
+        <header>
+            <a [routerLink]="['/encuentro/new']" type="button" class="btn mb-2">
+                <i class="fas fa-plus"></i> Crear nuevo Encuentro
+            </a>
+        </header>
+
+        <!--
+        <ng-template let-fila>
+            <button type="button" class="btn btn-success" [routerLink]="['/usuario/view/' + fila.id]"><i
+                    class="fas fa-eye"></i></button>
+            <button type="button" class="btn btn-warning" [routerLink]="['/usuario/edit/' + fila.id]"><i
+                    class="fas fa-pen"></i></button>
+            <button type="button" class="btn btn-danger" [routerLink]="['/usuario/remove/' + fila.id]"><i
+                    class="fas fa-trash"></i></button>
+        </ng-template>
+        -->
+
+    </app-encuentro-unrouted-plist>
+
+</div>
+<app-footer></app-footer>

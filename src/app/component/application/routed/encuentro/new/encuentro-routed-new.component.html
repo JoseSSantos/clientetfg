@@ -1,0 +1,95 @@
+<app-menu></app-menu>
+
+<div class="container my-3">
+
+  <app-header [title]="'Nuevo ' + strTitleSingular">
+  </app-header>
+  <div class="row justify-content-center">
+
+    <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
+
+      <div class="row mb-3">
+        <label for="Equipo1" class="col-sm-2 col-form-label">Primer Equipo</label>
+        <div class="col-sm-10" *ngIf="oUsuarioSession?.tipousuario?.id==1">
+            <div class="row mb-3">
+              <div class="col-sm-10">
+                <div class="input-group">
+                  <p-autoComplete id="Equipo1" class="input" [(ngModel)]="text1" formControlName="Equipo1" [suggestions]="equipos" (completeMethod)="getEquipos($event)" field="nombre"
+                  [dropdown]="true"></p-autoComplete>
+                </div>
+              </div>
+            </div>
+          
+        </div>
+
+        <div class="col-sm-10" *ngIf="oUsuarioSession?.tipousuario.id==2">
+          <div class="row mb-3">
+            <div class="col-sm-10" id="placeholder">
+              <input type="text" value="{{oUsuarioSession.equipo.nombre}}" readonly>
+            </div>
+          </div>
+        </div>
+
+
+
+        <label for="Equipo2" *ngIf="oUsuarioSession?.tipousuario?.id==1" class="col-sm-2 col-form-label">Segundo Equipo</label>
+        <div class="col-sm-10" *ngIf="oUsuarioSession?.tipousuario?.id==1">
+            <div class="row mb-3">
+              <div class="col-sm-10">
+                <div class="input-group">
+                  <p-autoComplete id="Equipo2" class="input" [(ngModel)]="text2" formControlName="Equipo2" [suggestions]="equipos" (completeMethod)="getEquipos($event)" field="nombre"
+                  [dropdown]="true"></p-autoComplete>
+                </div>
+              </div>
+            </div>
+          
+        </div>
+        
+
+            <label for="fecha" class="col-sm-2 col-form-label">Fecha</label>
+            <div class="col-sm-10">
+                <input type="text" name="fecha" id="fecha" formControlName="fecha"
+                    class="text ui-widget-content ui-corner-all" />
+                <div *ngIf="f.fecha.dirty && f.fecha.errors?.required" class="text-danger">
+                    Se debe introducir una fecha correcta
+                </div>
+            </div>
+
+      </div>
+
+      <div class="row mb-3 justify-content-center">
+        <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
+          <button type="submit" class="btn btn-warning" [disabled]="oForm.invalid || oForm.pristine"><i
+              [ngClass]="oIconService.getIcon('ok')"></i> Crear
+            el {{strTitleSingular}}</button>
+        </div>
+      </div>
+
+    </form>
+
+    <div class="control-group text-center mt-5">
+      <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
+        <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i class="fas fa-home"></i> Página
+          principal</a>
+        <a class="btn btn-primary mx-2" [routerLink]="['/encuentro/plist']"><i class="fas fa-file-alt"></i> Listado de
+          Encuentros</a>
+        <a class="btn btn-primary mx-2" (click)="goBack()"><i class="fas fa-arrow-circle-left"></i> Volver </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+<app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModal.asObservable()"
+  (close)="onCloseModal()">
+  <app-equipo-unrouted-plist [mode]="false" (selection)="onSelection1($event)">
+    <header></header>
+  </app-equipo-unrouted-plist>
+
+  <app-equipo-unrouted-plist [mode]="false" (selection)="onSelection2($event)">
+  </app-equipo-unrouted-plist>
+</app-modal>
+
+<app-popup [show]="eventsSubjectShowPopup.asObservable()" [body]="strResult" (close)="onClosePopup()"></app-popup>

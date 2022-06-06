@@ -1,0 +1,161 @@
+<app-menu></app-menu>
+
+<div class="container my-3">
+
+  <app-header [title]="'Edición de ' + strTitleSingular">
+  </app-header>
+
+  <div class="row justify-content-center">
+
+    <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()" *ngIf="oForm">
+
+      <div class="row mb-3">
+
+        <label for="id" class="col-sm-2 col-form-label">Id</label>
+        <div class="col-sm-10">
+          <div class="row mb-3">
+            <div class="col-sm-10">
+              <input class="form-control" type="text" placeholder="{{id}}" readonly>
+            </div>
+          </div>
+        </div>
+
+       
+        <label for="login" class="col-sm-2 col-form-label">Login</label>
+        <div class="col-sm-10">
+          <div class="row mb-3">
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="login" formControlName="login" value="{{oUsuario2Show?.login}}"
+                [ngClass]="{'is-valid' : f.login.dirty && !(f.login.errors?.required || f.login.errors?.minlength) }">
+              <div *ngIf="f.login.dirty && f.login.errors?.required" class="text-danger">
+                Se debe introducir un Login
+              </div>
+              <div *ngIf="f.login.dirty && f.login.errors?.minlength" class="text-danger">
+                El Login introducido es demasiado corto
+              </div>
+            </div>
+          </div>
+        </div>
+        <label for="password" class="col-sm-2 col-form-label">password</label>
+        <div class="col-sm-10">
+          <div class="row mb-3">
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="password" formControlName="password" 
+                [ngClass]="{'is-valid' : f.password.dirty && !(f.password.errors?.required || f.password.errors?.minlength) }">
+              <div *ngIf="f.password.dirty && f.password.errors?.required" class="text-danger">
+                Se debe introducir un password
+              </div>
+              <div *ngIf="f.password.dirty && f.password.errors?.minlength" class="text-danger">
+                El password introducido es demasiado corto
+              </div>
+            </div>
+          </div>
+        </div>
+        <label for="summonername" class="col-sm-2 col-form-label">summonername</label>
+        <div class="col-sm-10">
+          <div class="row mb-3">
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="summonername" formControlName="summonername" value="{{oUsuario2Show?.summonername}}"
+                [ngClass]="{'is-valid' : f.summonername.dirty && !(f.summonername.errors?.required || f.summonername.errors?.minlength) }">
+              <div *ngIf="f.summonername.dirty && f.summonername.errors?.required" class="text-danger">
+                Se debe introducir un summonername
+              </div>
+              <div *ngIf="f.summonername.dirty && f.summonername.errors?.minlength" class="text-danger">
+                El summonername introducido es demasiado corto
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <label for="email" class="col-sm-2 col-form-label">email</label>
+        <div class="col-sm-10">
+          <div class="row mb-3">
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="email" formControlName="email" value="{{oUsuario2Show?.email}}"
+                [ngClass]="{'is-valid' : f.email.dirty && !(f.email.errors?.required || f.email.errors?.minlength) }">
+              <div *ngIf="f.email.dirty && f.email.errors?.required" class="text-danger">
+                Se debe introducir un email
+              </div>
+              <div *ngIf="f.email.dirty && f.email.errors?.minlength" class="text-danger">
+                El email introducido es demasiado corto
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <label for="descripcion" class="col-sm-2 col-form-label">descripcion</label>
+        <div class="col-sm-10">
+          <div class="row mb-3">
+            <div class="col-sm-10">
+              <textarea class="form-control" value="{{oUsuario2Show?.descripcion}}" id="descripcion" formControlName="descripcion"
+                [ngClass]="{'is-valid' : f.descripcion?.dirty && !(f.descripcion.errors?.required || f.descripcion.errors?.minlength) }"></textarea>
+              <div *ngIf="f.descripcion?.dirty && f.descripcion.errors?.required" class="text-danger">
+                Se debe introducir una descripcion
+              </div>
+              <div *ngIf="f.descripcion?.dirty && f.descripcion.errors?.minlength" class="text-danger">
+                El descripcion introducido es demasiado corto
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <label for="tusuario" class="col-sm-2 col-form-label">Equipo</label>
+        <div class="col-sm-10">
+          <div class="row mb-3">
+            <div class="col-sm-10">
+              <div class="input-group">
+                <p-autoComplete id="equipo" class="input" formControlName="equipo" [placeholder]="oUsuario2Show?.equipo.nombre" [suggestions]="equipos" (completeMethod)="getEquipos($event)" field="nombre"
+                [dropdown]="true"></p-autoComplete>
+            </div>
+            </div>
+          </div>
+        </div>
+        <label for="tusuario" *ngIf="oUsuarioSession?.tipousuario?.id==1" class="col-sm-2 col-form-label">Tipo Usuario</label>
+
+        <div class="col-sm-10">
+          <div class="row mb-3">
+            <div class="col-sm-10">
+              <div class="input-group" *ngIf="oUsuarioSession?.tipousuario?.id==1">
+                <span class="input-group-text">{{oUsuario2Show?.tipousuario.nombre}}</span>
+                <input id="tusuario" type="number" class="form-control" id="tusuario" formControlName="tusuario" value="{{oUsuario2Show?.tipousuario.id}}"
+                    (ngModelChange)="onChangeTUsuario($event)">
+                <button type="button" class="btn btn-success" (click)="openModal()">Buscar tusuario</button>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3 justify-content-center">
+        <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
+          <button type="submit" class="btn btn-warning" [disabled]="oForm.invalid || oForm.pristine"><i
+              [ngClass]="oIconService.getIcon('ok')"></i> Modificar
+            el {{strTitleSingular}}</button>
+        </div>
+      </div>
+
+    </form>
+
+    <div class="control-group text-center mt-5">
+      <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
+        <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i class="fas fa-home"></i> Página
+          principal</a>
+        <a class="btn btn-primary mx-2" [routerLink]="['/' + strEntity + '/plist']"><i
+            [ngClass]="oIconService.getIcon('plist')"></i> Listado de
+          {{ strTitlePlural }}</a>
+        <a class="btn btn-primary mx-2" (click)="goBack()"><i class="fas fa-arrow-circle-left"></i> Volver </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<app-footer></app-footer>
+<app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModal.asObservable()"
+    (close)="onCloseModal()">
+    <app-tipousuario-unrouted-plist [mode]="false" (selection)="onSelection($event)">
+        <header></header>        
+    </app-tipousuario-unrouted-plist>
+</app-modal>
+
+<app-popup [show]="eventsSubjectShowPopup.asObservable()" [body]="strResult" (close)="onClosePopup()"></app-popup>

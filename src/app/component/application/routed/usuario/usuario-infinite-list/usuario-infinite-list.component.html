@@ -1,0 +1,9 @@
+<app-menu></app-menu>
+
+<form class="container" role="search">
+    <input id="search" type="search" placeholder="Search..." (keyup)="onKeyUpFilter($event)" autofocus required />
+  </form>
+<!-- <div class="container" infiniteScroll  (scrolled)="onScroll()">-->
+      <app-usuario-infinite-routed-list></app-usuario-infinite-routed-list>
+  <!-- </div> -->
+  <app-footer></app-footer>

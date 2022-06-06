@@ -1,0 +1,25 @@
+@font-face {
+    font-family: BatmanForever;
+    src: url(/src/assets/fonts/batmfa__.woff) format("woff");
+}
+
+*{
+    font-family: 'BatmanForever', sans-serif;
+    color:white;
+}
+*:hover{
+    color: red;
+}
+nav{
+    background: #000;
+}
+
+ul{
+    display:flex;
+    justify-content: center;   
+}
+li{
+    margin: 0.75rem;
+}
+
+                

@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+  <table class="table table-striped">
+    <tbody>
+      <tr *ngIf="oUsuarioSession?.tipousuario?.id==1">
+        <th> ID</th>
+        <td>{{oUsuario?.id}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="perfil">
+    <div class="principal">
+      <div class="imagenperfil">
+        <img src="https://ddragon.leagueoflegends.com/cdn/12.10.1/img/profileicon/{{oUsuario?.profileiconid}}.png">
+      </div>
+      <div class="datos">
+        <div class="login">
+          <p>@{{oUsuario?.login}}</p>
+        </div>
+        <div class="summonername">
+          <p>{{oUsuario?.summonername}}</p>
+        </div>
+        <div class="Rango" *ngIf="oUsuario?.tier!=null">
+          <p>{{oUsuario?.tier}} {{oUsuario?.rank}}</p>
+        </div>
+        <div class="Nivel">
+          <p>Lvl: {{oUsuario?.summonerlevel}}</p>
+        </div>
+        <div class="Media">
+          <p *ngIf="oUsuario?.wins!=null">
+          Victorias: {{oUsuario?.wins}}
+          Derrotas: {{oUsuario?.losses}}
+          WinRate: {{winRate | number:'.1-2'}}%
+        </p>
+        <p *ngIf="oUsuario?.wins==null">
+          Unranked
+        </p>
+        </div>
+        <div class="redes">
+          <p>
+          Discord: {{oUsuario?.discord}}<br>
+          Twitter: {{oUsuario?.twitter}}
+        </p>
+        </div>
+      </div>
+      <div class="ajustes" *ngIf="oUsuarioSession?.id==this.id">
+        
+        <img src="../../../../../../assets/img/settings.png" routerLink="/usuario/edit/{{this.id}}">
+
+        <img src="../../../../../../assets/img/reload.png" (click)="reload()">
+      </div>
+    </div>
+
+    <div class="descripcion">
+  <p>{{oUsuario?.descripcion}}</p>
+    </div>
+
+  </div>
+
+</div>

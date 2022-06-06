@@ -1,0 +1,104 @@
+.principal{
+    display: flex;
+    height: auto;
+    justify-content: space-between;
+}
+.equipo1{
+    float: left;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 40%;
+    border-radius: 5px;
+}
+
+.equipo2{
+    float: right;
+    display: flex;
+    align-items:center;
+    cursor: pointer;
+    width: 40%;
+    border-radius: 5px;
+
+}
+.equipo1:hover{
+    background-color: blue;
+}
+.equipo2:hover{
+    background-color: red;
+}
+.vs img{
+    width: 20%;
+}
+
+
+.equipo1datos{
+    margin-left: 5%;
+    margin-right: 5%;
+height: 15%;
+width: 100%;
+text-align: right;
+float: right;
+}
+.equipo2datos{
+    width: 100%;
+    height: 15%;
+    margin-left: 5%;
+}
+.fecha {
+    text-align: center;
+    clear:both;
+margin-bottom: 5%;
+}
+
+
+.encuentro{
+    border: 3px solid;
+    border-color: red;
+    overflow:hidden;
+    width: 100%;
+    border-radius: 25px;
+}
+.equipo1foto{
+    width: 20rem;
+}
+.equipo1foto img{
+    margin-left: 3%;
+    width: 12rem;
+    height: 12rem;
+    float:left;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-radius: 50%;
+    justify-content: center;
+}
+.equipo2foto img{
+    margin-right: 3%;
+    width: 12rem;
+    height: 12rem;
+    float:right;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-radius: 50%;
+    justify-content: center;
+}
+.unirse{
+    background-color: #EF233C; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 50px;
+    margin-top: 5%;
+}
+.uniser:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+
+}

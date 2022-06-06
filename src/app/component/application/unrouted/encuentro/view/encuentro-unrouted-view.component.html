@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+
+  <div class="encuentro">
+    <div class="equipo1" [routerLink]="['/equipo/view/'+oPartido?.equipo1.id]">
+      <div class="equipo1foto">
+        <img src="data:image/jpeg;base64,{{oPartido?.equipo1.file.archivo}}">
+
+      </div>
+      <div class="equipo1datos">
+        <h2>
+        {{oPartido?.equipo1.siglas | trim:10}}</h2>
+        <small>{{oPartido?.equipo1.nombre}}</small>
+      </div>
+    </div>
+    <!-- <div class="vs">
+      <img src="../../../../../../assets/img/vs.png">
+    </div> -->
+    <div class="equipo2" *ngIf="oPartido?.equipo2!=null" [routerLink]="['/equipo/view/'+oPartido?.equipo2.id]">
+
+      <div class="equipo2datos">
+        <h2>{{oPartido?.equipo2.siglas | trim:10}}</h2>
+        <small>{{oPartido?.equipo2.nombre}}</small>
+
+      </div>
+
+      <div class="equipo2foto">
+        <img src="data:image/jpeg;base64,{{oPartido?.equipo2.file.archivo}}">
+
+      </div>
+    </div>
+    <div class="equipo2" *ngIf="oPartido?.equipo2==null" (click)="onclick()">
+
+      <div class="equipo2datos">
+        <h2>Waiting</h2>
+        <small>Sin contrincante</small>
+        <div class="boton">
+        <button class="unirse">Unirse?</button>
+      </div>
+      </div>
+
+      <div class="equipo2foto">
+        <img src="https://ddragon.leagueoflegends.com/cdn/11.14.1/img/profileicon/4005.png">
+
+      </div>
+    </div>
+
+    <div class="fecha">
+      <h2>{{oPartido?.fecha}}</h2>
+    </div>
+
+  </div>
+
+  </div>
+
+  <app-popup [show]="eventsSubjectShowPopup.asObservable()" [body]="strResult" (close)="onClosePopup()"></app-popup>

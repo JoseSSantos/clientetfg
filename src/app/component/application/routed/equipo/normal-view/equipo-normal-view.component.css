@@ -1,0 +1,24 @@
+
+  
+  .card {
+    display: flex;
+    height: 280px;
+    width: 300px;
+    background-color: #17141d;
+    border-radius: 10px;
+    box-shadow: -1rem 0 3rem #000;
+    background-size: 100% 100%;
+  /*   margin-left: -50px; */
+    transition: 0.4s ease-out;
+    position: relative;
+    left: 0px;
+    margin: 5%;
+  }
+  .card:hover{
+    cursor: pointer;
+  }
+  
+  h1{
+    margin-left: 10%;
+    margin-top: 2%;
+  }

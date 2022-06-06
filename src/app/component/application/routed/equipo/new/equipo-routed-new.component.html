@@ -1,0 +1,98 @@
+<app-menu></app-menu>
+
+<div class="container my-3">
+
+  <app-header [title]="'Nuevo ' + strTitleSingular">
+  </app-header>
+  <div class="row justify-content-center">
+
+    <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
+
+      <div class="row mb-3">
+        <label for="nombre" class="col-sm-2 col-form-label">nombre</label>
+        <div class="col-sm-10">
+          <div class="row mb-3">
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="nombre" formControlName="nombre"
+                [ngClass]="{'is-valid' : f.nombre.dirty && !(f.nombre.errors?.required || f.nombre.errors?.minlength) }">
+              <div *ngIf="f.nombre.dirty && f.nombre.errors?.required" class="text-danger">
+                Se debe introducir un nombre
+              </div>
+              <div *ngIf="f.nombre.dirty && f.nombre.errors?.minlength" class="text-danger">
+                El nombre introducido es demasiado corto
+              </div>
+            </div>
+          </div>
+        </div>
+        <label for="descripcion" class="col-sm-2 col-form-label">descripcion</label>
+        <div class="col-sm-10">
+          <div class="row mb-3">
+            <div class="col-sm-10">
+                <textarea class="form-control" id="descripcion" formControlName="descripcion"
+                [ngClass]="{'is-valid' : f.descripcion.dirty && !(f.descripcion.errors?.required || f.descripcion.errors?.minlength) }"></textarea>
+              <div *ngIf="f.descripcion.dirty && f.descripcion.errors?.required" class="text-danger">
+                Se debe introducir una descripcion
+              </div>
+              <div *ngIf="f.descripcion.dirty && f.descripcion.errors?.minlength" class="text-danger">
+                El descripcion introducido es demasiado corto
+              </div>
+            </div>
+          </div>
+        </div>
+        <label for="siglas" class="col-sm-2 col-form-label">siglas</label>
+        <div class="col-sm-10">
+          <div class="row mb-3">
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="siglas" formControlName="siglas"
+                [ngClass]="{'is-valid' : f.siglas.dirty && !(f.siglas.errors?.required || f.siglas.errors?.minlength) }">
+              <div *ngIf="f.siglas.dirty && f.siglas.errors?.required" class="text-danger">
+                Se debe introducir un siglas
+              </div>
+              <div *ngIf="f.siglas.dirty && f.siglas.errors?.minlength" class="text-danger">
+                El siglas introducido es demasiado corto
+              </div>
+            </div>
+          </div>
+        </div>
+        <label for="file" class="col-sm-2 col-form-label">file</label>
+        <div class="col-sm-10">
+          <div class="row mb-3">
+            <div class="col-sm-10">
+              <input type="file" class="form-control" id="file" (change)="includeImage($event);">
+              <img *ngIf="file?.archivo" [src]="'data:image/jpeg;base64,'+ file?.archivo">
+
+            </div>
+          </div>
+        </div>
+        
+        
+
+      </div>
+
+      <div class="row mb-3 justify-content-center">
+        <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
+          <button type="submit" class="btn btn-warning" [disabled]="oForm.invalid || oForm.pristine"><i
+              [ngClass]="oIconService.getIcon('ok')"></i> Crear
+            el {{strTitleSingular}}</button>
+        </div>
+      </div>
+
+    </form>
+
+    <div class="control-group text-center mt-5">
+      <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
+        <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i class="fas fa-home"></i> Página
+          principal</a>
+        <a class="btn btn-primary mx-2" [routerLink]="['/plist']"><i class="fas fa-file-alt"></i> Listado de
+          Posts</a>
+        <a class="btn btn-primary mx-2" (click)="goBack()"><i class="fas fa-arrow-circle-left"></i> Volver </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+
+<app-popup [show]="eventsSubjectShowPopup.asObservable()" [body]="strResult" (close)="onClosePopup()"></app-popup>

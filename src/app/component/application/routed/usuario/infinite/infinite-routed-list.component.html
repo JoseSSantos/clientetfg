@@ -1,0 +1,35 @@
+<app-menu></app-menu>
+
+<div class="container" infiniteScroll  (scrolled)="onScroll()">
+  <h1>Usuarios</h1>
+
+
+  <div class="row justify-content-center">
+    <ul class="cards">
+      <div class="card" *ngFor="let usuario of usuarios;">
+    <li>
+      <a href="/usuario/view/{{usuario?.id}}" class="card">
+        <img src="https://ddragon.leagueoflegends.com/cdn/12.10.1/img/profileicon/{{usuario?.profileiconid}}.png" class="card__image" alt="" />
+        <div class="card__overlay">
+          <div class="card__header">
+            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"></svg> 
+
+            <img class="card__thumb" *ngIf="usuario?.tier==null" src="assets/img/Unraked.png" alt="" />
+
+            <img class="card__thumb" *ngIf="usuario?.tier!=null" src="../../../../../../assets/img/{{usuario?.tier}}.png" alt="" />
+            <div class="card__header-text">
+              <h3 class="card__title">{{usuario?.summonername}}</h3>
+              <span class="card__status">{{usuario?.equipo.nombre}}</span><br>
+
+            </div>          
+          </div>
+          <p class="card__description">{{usuario?.descripcion}}</p>
+        </div>
+      </a>
+    </li> 
+  </div>
+  </ul>
+
+    
+  </div>
+</div>

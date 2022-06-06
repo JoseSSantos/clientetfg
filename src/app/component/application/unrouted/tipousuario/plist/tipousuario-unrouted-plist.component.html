@@ -1,0 +1,55 @@
+<div class="row justify-content-between my-3">
+    <div class="col-md text-end">
+      <h4 class="text-muted">{{nTotalElements}} {{strTitlePlural}}</h4>
+    </div>
+  </div>
+<div class="row justify-content-center">
+
+    <div class="col-md table-responsive-md">
+        <table class="table table-bordered">
+            <thead>
+                <tr class="text-center">
+                    <th (click)="doSetOrder('id')">
+                        <i [ngClass]="oIconService.getIcon('id')"></i> ID
+                        <i [ngClass]="oIconService.getIcon('flechaUp')"
+                            *ngIf="strSortField == 'id' && strSortDirection == 'asc'"></i>
+                        <i [ngClass]="oIconService.getIcon('flechaDown')"
+                            *ngIf="strSortField == 'id' && strSortDirection == 'desc'"></i>
+                    </th>
+                    <th (click)="doSetOrder('nombre')">
+                        <i [ngClass]="oIconService.getIcon('nombre')"></i> Nombre
+                        <i [ngClass]="oIconService.getIcon('flechaUp')"
+                            *ngIf="strSortField == 'nombre' && strSortDirection == 'asc'"></i>
+                        <i [ngClass]="oIconService.getIcon('flechaDown')"
+                            *ngIf="strSortField == 'nombre' && strSortDirection == 'desc'"></i>
+                    </th>
+                    <!-- <th (click)="doSetOrder('usuarios')"> -->
+                    <th>
+                        <i [ngClass]="oIconService.getIcon('usuario')"></i> Usuarios
+                    </th>
+                    <th>
+                        <i [ngClass]="oIconService.getIcon('acciones')"></i> Acciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fila of aTipoUsuarios">
+                    <td class="text-end">{{ fila.id }}</td>
+                    <td>{{ fila.nombre }}</td>
+                    <td style="text-align: center">
+                        <button class="btn btn-outline-secondary btn-sm"
+                            [routerLink]="['/usuario/plist/tipousuario/', fila.id]">
+                            {{ fila?.usuarios }}
+                            <i [ngClass]="oIconService.getIcon('usuario')"></i>
+                        </button>
+                    </td>
+                    <td style="text-align: center">
+                        <button class="btn btn-success btn-sm" (click)="onSelection(fila.id)">
+                            <i [ngClass]="oIconService.getIcon('view')"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

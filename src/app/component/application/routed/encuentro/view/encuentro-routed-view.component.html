@@ -1,0 +1,26 @@
+<app-menu></app-menu>
+<div class="container my-3">
+
+    <app-encuentro-unrouted-view [id]=id></app-encuentro-unrouted-view>
+ 
+<div class="row justify-content-center" *ngIf="oUsuarioSession.tipousuario.id==2 && oUsuarioSession.equipo.id==id || oUsuarioSession.tipousuario.id==1">
+    <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center mt-5">
+        <a class="btn btn-warning mx-2" [routerLink]="['/encuentro/edit/' + id]">
+            
+            Modificarlo</a>
+        <a class="btn btn-danger mx-2" [routerLink]="['/encuentro/remove/' + id]">
+            Borrarlo
+        </a>
+    </div>
+
+    <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center mt-5">
+        <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i class="fas fa-home"></i> Página
+            principal</a>
+        <a class="btn btn-primary mx-2" [routerLink]="['/encuentro/plist']"><i class="fas fa-file-alt"></i>
+            Listado
+            de Encuentros</a>
+        <a class="btn btn-primary mx-2" (click)="goBack()"><i class="fas fa-arrow-circle-left"></i> Volver </a>
+    </div>
+</div>
+</div>
+<app-footer></app-footer>

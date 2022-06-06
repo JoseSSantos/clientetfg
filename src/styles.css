@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: BatmanForever;
+    src: url(assets/fonts/batmfa__.woff) format("woff");
+}
+*{
+    font-family: 'BatmanForever', sans-serif;
+    
+}
+label{
+    color: white;
+}
+.texto{
+    color: white;
+}
+h6{
+    color:white;
+}
+td, h6, .texto, label, h2, small, p, h5, .modal-body, th, h4, .datos, h1{
+    color: white;
+}
+body{
+    background-color: rgb(17, 17, 17);
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.btn-close{
+    background-color: white;
+}

@@ -1,0 +1,23 @@
+<div class="row justify-content-center">
+
+  <div class="equipo">
+    <div class="TeamName">
+      <h2>{{oEquipo?.nombre}}</h2>
+      <br> 
+      <h4>Siglas: {{oEquipo?.siglas}}</h4>
+
+    </div>
+    <div class="foto">
+      <img src="data:image/jpeg;base64,{{oEquipo?.file.archivo}}">
+    </div>
+    <div class="datos">
+      {{oEquipo?.descripcion}}
+    </div>
+
+    <div class="imprimir">
+      <button class="btn-primary" (click)="equipo(oEquipo?.id)" >Generar PDF</button>
+    </div>
+  </div>
+  </div>
+
+  <app-popup [show]="eventsSubjectShowPopup.asObservable()" [body]="strResult" (close)="onClosePopup()"></app-popup>

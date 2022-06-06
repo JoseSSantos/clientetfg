@@ -1,0 +1,14 @@
+<app-menu></app-menu>
+
+<h1>Equipos</h1>
+
+<div class="container" infiniteScroll  (scrolled)="onScroll()">
+  <div class="row justify-content-center">
+    <div class="card" routerLink="/equipo/view/{{equipo.id}}" *ngFor="let equipo of equipos;" [ngStyle]="{'background-image':'url('+'data:image/jpeg;base64,'+equipo.file.archivo+')'}">
+
+      <h3 class="title" style="text-align: center;"> {{equipo.nombre | trim:12}}</h3>
+    </div>
+
+    </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,81 @@
+<div class="row justify-content-between my-3">
+    <div class="col-md text-start">
+      <h6>{{strFilteredMessage}}</h6>
+    </div>  
+    <div class="col-md text-center">
+      <form>
+        <div class="input-group input-group-sm">
+          <div class="input-group-prepend">
+            <span class="input-group-text"></span>
+          </div>
+          <!-- <input type="text" class="form-control" placeholder="{{'Filtro de ' + strTitlePlural}}" placeholder="Search"
+            (keyup)="onKeyUpFilter($event)" [(ngModel)]="strFilter" name="buscar" aria-label="Small"
+            aria-describedby="inputGroup-sizing-sm" /> -->
+        </div>
+      </form>
+    </div>
+    <div class="col-md text-end">
+      <h4 class="text-muted">{{nTotalElements}} {{strTitlePlural}}</h4>
+    </div>
+  </div>
+  
+  <div class="row justify-content-between">
+    <div class="col-md text-start">
+      <nav aria-label="pagination">
+        <ul class="pagination">
+          <!-- <li class="page-item" aria-current="page" *ngFor="let p of aPaginationBar"
+            [ngClass]="{'active': (nPage+'' == p)}">
+            <a class="page-link" (click)="nPage=(+p);jumpToPage()" href="#">{{p}}</a>
+          </li> -->
+        </ul>
+      </nav>
+    </div>
+  
+    <div class="col-md text-center">
+      <ng-content select="header"></ng-content>
+    </div>
+  
+    <div class="col-md text-end">
+      <div class="dropdown mb-3">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Productos por página: {{nPageSize}}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" (click)="nPageSize=10;getPage()">10</a></li>
+          <li><a class="dropdown-item" (click)="nPageSize=50;getPage()">50</a></li>
+          <li><a class="dropdown-item" (click)="nPageSize=100;getPage()">100</a></li>
+          <li><a class="dropdown-item" (click)="nPageSize=1000;getPage()">1000</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row justify-content-center">
+    <ul class="cards">
+      <div class="card" *ngFor="let usuario of aUsuario">
+    <li>
+      <a routerLink="/equipo/view/{{usuario?.id}}" class="card">
+        <img src="https://ddragon.leagueoflegends.com/cdn/12.10.1/img/profileicon/{{usuario?.profileiconid}}.png" class="card__image" alt="" />
+        <div class="card__overlay">
+          <div class="card__header">
+            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"></svg> 
+
+            <img class="card__thumb" *ngIf="usuario?.tier==null" src="../../../../../../assets/img/Unraked.png" alt="" />
+
+            <img class="card__thumb" *ngIf="usuario?.tier!=null" src="../../../../../../assets/img/{{usuario?.tier}}.png" alt="" />
+            <div class="card__header-text">
+              <h3 class="card__title">{{usuario?.summonername}}</h3>
+              <span class="card__status">{{usuario?.equipo.nombre}}</span><br>
+
+            </div>          
+          </div>
+          <p class="card__description">{{usuario?.descripcion}}</p>
+        </div>
+      </a>
+    </li> 
+  </div>
+  </ul>
+
+    
+  </div>

@@ -1,0 +1,33 @@
+<app-menu></app-menu>
+
+<div class="container my-3">
+
+
+    <app-usuario-unrouted-view [id]=id></app-usuario-unrouted-view>
+    <div class="equipo">
+        <app-equipo-unrouted-view [idequipo]=id></app-equipo-unrouted-view>
+      </div>
+
+    <div class="row justify-content-center" *ngIf="oUsuarioSession.id==id || oUsuarioSession.tipousuario.id==1">
+        <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center mt-5">
+            <a class="btn btn-warning mx-2" [routerLink]="['/usuario/edit/' + id]">
+                
+                Modificarlo</a>
+            <a class="btn btn-danger mx-2" [routerLink]="['/usuario/remove/' + id]">
+                Borrarlo
+            </a>
+        </div>
+
+        <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center mt-5">
+            <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i class="fas fa-home"></i> Página
+                principal</a>
+            <a class="btn btn-primary mx-2" [routerLink]="['/usuario/plist']"><i class="fas fa-file-alt"></i>
+                Listado
+                de usuarios</a>
+            <a class="btn btn-primary mx-2" (click)="goBack()"><i class="fas fa-arrow-circle-left"></i> Volver </a>
+        </div>
+    </div>
+
+</div>
+
+<app-footer></app-footer>

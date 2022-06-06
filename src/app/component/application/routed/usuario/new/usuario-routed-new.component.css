@@ -1,0 +1,17 @@
+span{color: black !important;}
+
+.input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+
+:host >>> .p-autocomplete .p-autocomplete-input {
+    width: 100%;
+  }
+
+  :host >>> .p-autocomplete{
+      width: 100%;
+  }

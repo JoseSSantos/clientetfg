@@ -1,0 +1,95 @@
+<app-menu></app-menu>
+
+<div class="container my-3">
+
+    <app-header [title]="'Edición de ' + strTitleSingular">
+    </app-header>
+    <div class="row justify-content-center">
+
+      <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
+
+        <div class="row mb-3">
+          <label for="equipo1" class="col-sm-2 col-form-label">Primer Equipo</label>
+          <div class="col-sm-10">
+            <div class="row mb-3">
+              <div class="col-sm-10">
+                <input type="text" value="{{oPartido?.equipo1.id}}" class="form-control" id="equipo1" formControlName="equipo1"
+                  [ngClass]="{'is-valid' : f.equipo1.dirty && !(f.equipo1.errors?.required || f.equipo1.errors?.minlength) }">
+                <div *ngIf="f.equipo1.dirty && f.equipo1.errors?.required" class="text-danger">
+                  Se debe introducir un equipo1
+                </div>
+                <div *ngIf="f.equipo1.dirty && f.equipo1.errors?.minlength" class="text-danger">
+                  El equipo1 introducido es demasiado corto
+                </div>
+              </div>
+            </div>
+          </div>
+          <label for="equipo2" class="col-sm-2 col-form-label">Segundo equipo</label>
+          <div class="col-sm-10">
+            <div class="row mb-3">
+              <div class="col-sm-10">
+
+                <input *ngIf="oPartido?.equipo2==null" type="equipo2" class="form-control" id="equipo2" formControlName="equipo2"
+                  [ngClass]="{'is-valid' : f.equipo2.dirty && !(f.equipo2.errors?.required || f.equipo2.errors?.minlength) }">
+
+                  
+                <input *ngIf="oPartido?.equipo2!=null" type="equipo2" value="{{oPartido?.equipo2.id}}"class="form-control" id="equipo2" formControlName="equipo2"
+                  [ngClass]="{'is-valid' : f.equipo2.dirty && !(f.equipo2.errors?.required || f.equipo2.errors?.minlength) }">
+                <div *ngIf="f.equipo2.dirty && f.equipo2.errors?.required" class="text-danger">
+                  Se debe introducir un equipo2
+                </div>
+                <div *ngIf="f.equipo2.dirty && f.equipo2.errors?.minlength" class="text-danger">
+                  El equipo2 introducido es demasiado corto
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+          
+  
+              <label for="fecha" class="col-sm-2 col-form-label">Fecha</label>
+              <div class="col-sm-10">
+                  <input type="text" value="{{oPartido?.fecha}}" name="fecha" id="fecha" formControlName="fecha"
+                      class="text ui-widget-content ui-corner-all" />
+                  <div *ngIf="f.fecha.dirty && f.fecha.errors?.required" class="text-danger">
+                      Se debe introducir una fecha correcta
+                  </div>
+              </div>
+  
+        </div>
+
+
+    <div class="row mb-3 justify-content-center">
+        <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
+          <button type="submit" class="btn btn-warning" [disabled]="oForm.invalid || oForm.pristine"><i
+              [ngClass]="oIconService.getIcon('ok')"></i> Modificar
+            el {{strTitleSingular}}</button>
+        </div>
+      </div>
+
+    </form>
+
+    <div class="control-group text-center mt-5">
+      <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
+        <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i class="fas fa-home"></i> Página
+          principal</a>
+        <a class="btn btn-primary mx-2" [routerLink]="['/' + strEntity + '/plist']"><i
+            [ngClass]="oIconService.getIcon('plist')"></i> Listado de
+          {{ strTitlePlural }}</a>
+        <a class="btn btn-primary mx-2" (click)="goBack()"><i class="fas fa-arrow-circle-left"></i> Volver </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<app-footer></app-footer>
+<app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModal.asObservable()"
+    (close)="onCloseModal()">
+    <app-tipousuario-unrouted-plist [mode]="false" (selection)="onSelection($event)">
+        <header></header>        
+    </app-tipousuario-unrouted-plist>
+</app-modal>
+
+<app-popup [show]="eventsSubjectShowPopup.asObservable()" [body]="strResult" (close)="onClosePopup()"></app-popup>

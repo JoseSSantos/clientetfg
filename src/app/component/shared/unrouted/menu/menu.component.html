@@ -1,0 +1,120 @@
+<nav class="navbar navbar-expand-lg ">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">eMatch</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="oUsuarioSession?.tipousuario?.id==1">
+
+                <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario?.id==1">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/usuario/plist'"
+                            [routerLink]="['/usuario/plist']">
+                            <!-- <i [ngClass]="oIconService.getIcon('usuario')"></i> -->
+                            Usuarios</a>
+                    </small>
+                </li>
+                <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario?.id==1">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/tipouser/plist'"
+                            [routerLink]="['/tipouser/plist']">
+                            <!-- <i
+                                [ngClass]="oIconService.getIcon('tipousuario')"></i>  -->
+                                Tipos de Usuario</a>
+                    </small>
+                </li>
+                <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario?.id==1">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/equipo/plist'"
+                            [routerLink]="['/equipo/plist']">
+                            Equipos</a>
+                    </small>
+                </li>
+                <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario?.id==1">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/encuentro/plist'"
+                            [routerLink]="['/encuentro/plist']"> Encuentros</a>
+                    </small>
+                </li>
+
+
+            </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="!oUsuarioSession">
+
+            </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="oUsuarioSession?.tipousuario?.id==3">
+
+                <li class="nav-item">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/infinite'"
+                            [routerLink]="['/infinite']"> Jugadores</a>
+                    </small>
+                </li>
+
+                <li class="nav-item">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/equipos'"
+                            [routerLink]="['/equipos']"> Equipos</a>
+                    </small>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="oUsuarioSession?.tipousuario?.id==2">
+
+                <li class="nav-item">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/infinite'"
+                            [routerLink]="['/infinite']"> Jugadores</a>
+                    </small>
+                </li>
+
+                <li class="nav-item">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/equipos'"
+                            [routerLink]="['/equipos']"> Equipos</a>
+                    </small>
+                </li>
+
+                <li class="nav-item">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/encuentro/plist/'"
+                            [routerLink]="['/encuentro/plist/']"> Encuentros</a>
+                    </small>
+                </li>
+                <li class="nav-item">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/equipo/view/{{oUsuarioSession?.id}}'"
+                          [routerLink]="['/equipo/view/'+oUsuarioSession?.equipo.id]"> {{oUsuarioSession?.equipo.nombre}}</a>
+                    </small>
+                </li>
+
+            </ul>
+
+
+            <span class="navbar-text" *ngIf="oUsuarioSession">
+                <small>
+                    <a class="nav-link"[class.active]="strUrl=='/usuario/view/{{oUsuarioSession?.id}}'" [routerLink]="['/usuario/view/'+oUsuarioSession?.id]"> {{oUsuarioSession?.login}}</a></small>
+            </span>
+
+            <span class="navbar-text" *ngIf="oUsuarioSession">
+                <small>
+                    <a class="nav-link" [class.active]="strUrl=='/logout'" [routerLink]="['/logout']"> Logout</a>
+                </small>
+            </span>
+
+            <span class="navbar-text" *ngIf="!oUsuarioSession">
+                <small>
+                    <a class="nav-link" [class.active]="strUrl=='/login'" [routerLink]="['/login']"> Login</a>
+                </small>
+            </span>
+            <span class="navbar-text" *ngIf="!oUsuarioSession">
+                <small>
+                    <a class="nav-link" [class.active]="strUrl=='/usuario/new'" [routerLink]="['/usuario/new']"> Register</a>
+                </small>
+            </span>
+
+        </div>
+    </div>
+</nav>

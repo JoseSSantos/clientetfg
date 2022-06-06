@@ -1,0 +1,59 @@
+.perfil{
+    border: 3px solid;
+    border-color: red;
+    overflow:hidden;
+    width: 100%;
+    border-radius: 25px;
+    
+}
+.principal{
+    overflow:hidden;
+}
+.datos{
+    margin-top: 5%;
+float:left
+
+}
+.imagenperfil{
+    float:left;
+    justify-content: center;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 15%;
+
+}
+
+.imagenperfil img{
+    border-radius: 50%;
+    margin: 0 auto; 
+    justify-content: center;
+
+}
+.descripcion{
+    clear:both;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+}
+
+.ajustes{
+    float: right;
+    margin: 5%;
+    width:10%;
+}
+
+.ajustes img{
+    float: right;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 3rem;
+}
+.ajustes img:hover{
+    cursor: pointer;
+}
+@media only screen and (max-width: 1400px){
+    .ajustes{margin-top: 5%;}
+
+
+}
